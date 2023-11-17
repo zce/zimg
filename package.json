@@ -1,0 +1,55 @@
+{
+  "name": "zimg",
+  "version": "0.1.0",
+  "description": "optimize images for production via sharp",
+  "keywords": [
+    "zimg",
+    "typescript",
+    "cli",
+    "zce"
+  ],
+  "repository": "zce/zimg",
+  "license": "MIT",
+  "author": "zce <w@zce.me> (https://zce.me)",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": "./dist/cli.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsup",
+    "format": "prettier --write ."
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/cli.ts"
+    ],
+    "clean": true,
+    "format": "esm",
+    "target": "node18",
+    "splitting": true,
+    "treeshake": true,
+    "dts": {
+      "entry": "src/index.ts",
+      "resolve": true
+    }
+  },
+  "dependencies": {
+    "cac": "latest",
+    "ora": "latest",
+    "sharp": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@zce/prettier-config": "latest",
+    "prettier": "latest",
+    "tsup": "latest",
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
