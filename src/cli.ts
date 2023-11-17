@@ -2,7 +2,7 @@
 import cac from 'cac'
 
 import { name, version } from '../package.json'
-import { image } from '.'
+import { zimg } from '.'
 
 const cli = cac(name).version(version).help()
 
@@ -12,7 +12,7 @@ cli
   .option('-s, --sizes <sizes>', 'Sizes to generate, default to `[640, 720, 1280, 1600]`')
   .option('-q, --quality <quality>', 'Quality of generated images, default to `75`')
   .action((cwd, { pattern, sizes, quality }) => {
-    return image({ cwd: cwd ?? 'public', pattern, sizes, quality })
+    return zimg({ cwd: cwd ?? 'public', pattern, sizes, quality })
   })
 
 const onError = (err: Error): void => {

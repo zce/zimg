@@ -2,13 +2,13 @@ import glob from 'fast-glob'
 import ora from 'ora'
 import sharp from 'sharp'
 
-type Options = {
+export interface ZImgOptions {
   /**
    * Current working directory, default to `process.cwd()`
    */
   cwd?: string
   /**
-   * Glob pattern to match files, default to `**\/*.{jpg,jpeg,png,gif,webp}`
+   * Glob pattern to match files, default to `**\/*.{jpg,jpeg,png,gif}`
    */
   pattern?: string
   /**
@@ -21,10 +21,10 @@ type Options = {
   quality?: number
 }
 
-export const image = async (options: Options) => {
+export const zimg = async (options: ZImgOptions = {}) => {
   const spinner = ora('optimizing images').start()
 
-  const pattern = options.pattern ?? '**/*.{jpg,jpeg,png,gif,webp}'
+  const pattern = options.pattern ?? '**/*.{jpg,jpeg,png,gif}'
   const cwd = options.cwd ?? process.cwd()
   const sizes = options.sizes ?? [640, 720, 1280, 1600]
   const quality = options.quality ?? 75
