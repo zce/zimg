@@ -1,6 +1,6 @@
 {
   "name": "zimg",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.0",
   "description": "optimize images for production via sharp",
   "keywords": [
     "zimg",
