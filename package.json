@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "cac": "latest",
+    "fast-glob": "latest",
     "ora": "latest",
     "sharp": "latest"
   },
