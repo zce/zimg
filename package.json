@@ -37,6 +37,7 @@
       "resolve": true
     }
   },
+  "prettier": "@zce/prettier-config",
   "dependencies": {
     "cac": "latest",
     "fast-glob": "latest",
