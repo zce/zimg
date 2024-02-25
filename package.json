@@ -1,7 +1,7 @@
 {
   "name": "zimg",
   "version": "0.1.0-beta.0",
-  "description": "optimize images for production via sharp",
+  "description": "Pre-optimize images for Next.js production or others via sharp",
   "keywords": [
     "zimg",
     "typescript",

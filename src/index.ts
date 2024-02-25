@@ -9,11 +9,11 @@ export interface ZImgOptions {
    */
   cwd?: string
   /**
-   * Glob pattern to match files, default to `**\/*.{jpg,jpeg,png,gif}`
+   * Glob pattern to match files, default to `'**\/*.{jpg,jpeg,png}'`
    */
   pattern?: string
   /**
-   * Filename of generated images, default to `[name].[size].webp`
+   * Filename of optimized image, default to `'[name].[size]'`
    */
   filename?: string
   /**
@@ -25,7 +25,7 @@ export interface ZImgOptions {
    */
   quality?: number
   /**
-   * Skip optimized images, default to `true`
+   * Skip optimized images rather than overwrite, default to `true`
    */
   skipOptimized?: boolean
 }
@@ -34,8 +34,8 @@ export const zimg = async (options: ZImgOptions = {}) => {
   const spinner = ora('optimizing images').start()
 
   const cwd = options.cwd ?? process.cwd()
-  const pattern = options.pattern ?? '**/*.{jpg,jpeg,png,gif}'
-  const filename = options.filename ?? '[name].[size].webp'
+  const pattern = options.pattern ?? '**/*.{jpg,jpeg,png}'
+  const filename = options.filename ?? '[name].[size]'
   const sizes = options.sizes ?? [640, 720, 1280, 1600]
   const quality = options.quality ?? 75
   const skipOptimized = options.skipOptimized ?? true
@@ -50,8 +50,7 @@ export const zimg = async (options: ZImgOptions = {}) => {
   }
 
   const getFilename = (file: string, size: number) => {
-    const name = file.replace(/\.[a-z]+$/i, '')
-    return filename.replace(/\[name\]/g, name).replace(/\[size\]/g, size.toString())
+    return filename.replace(/\[name\]/g, file.replace(/\.[a-z]+$/i, '')).replace(/\[size\]/g, size.toString()) + '.webp'
   }
 
   const files = await glob(pattern, { cwd, absolute: true })
