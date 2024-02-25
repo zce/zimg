@@ -1,6 +1,6 @@
 {
   "name": "zimg",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0",
   "description": "Pre-optimize images for Next.js production or others via sharp",
   "keywords": [
     "zimg",
